@@ -33,19 +33,23 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         String format = "%.2f";
 
+
         while (true) {
 
             System.out.println("Введите наименоване товара (или 'Звершить' для завершения)");
-            String productName = scanner.nextLine().trim();
 
-            if (productName.equalsIgnoreCase("Завершить")) {
+            List productNameList = new List ("","");
+
+            productNameList.name= scanner.nextLine().trim();
+            String a = productNameList.name;
+
+            if (productNameList.name.equalsIgnoreCase("Завершить")) {
                 break;
             }
-
             System.out.println("Введите стоимость товара в формате руб.копейки");
-            String inputPrice = scanner.nextLine().trim();
-            float price = Float.parseFloat(inputPrice);
-            total += price;
+            productNameList.price=scanner.nextLine().trim();
+            float priceNum = Float.parseFloat(productNameList.price);
+            total += priceNum;
 
             System.out.println("Хотите добавить еще одну позицию?\nВыберети вариант и наберите номер ответа.\n1. ДА\n2. НЕТ");
             String question = scanner.nextLine().trim();
@@ -57,9 +61,21 @@ public class Main {
             if (question.equalsIgnoreCase("2")) {
                 break;
             }
+
+
+
         }
+
+
 
         System.out.println("Общая стоимость всех товаров =" + String.format(format,total)+ "Руб.");
 
+
     }
+
+
+
+
+
+
 }
