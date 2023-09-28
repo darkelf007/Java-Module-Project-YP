@@ -67,14 +67,22 @@ public class Main {
 
         }
 
+
+
+
+
+
         System.out.println("список продуктов:");
 
         for (int i=0; i<products.size(); i++){
             String product = products.get(i);
             float price2 = Float.parseFloat(prices.get(i));
-            System.out.println(String.format("Товар: " + product + " Стоимость %.2f " , price2));
+            System.out.print(String.format("Товар: " + product + " Стоимость %.2f " , price2 ));
+            System.out.println(Ruble.getRuble(price2));
+            System.out.println("");
+        System.out.print("Общая стоимость всех товаров = " + String.format(format,total));
+            System.out.println(Ruble.getRuble(total));
 
-        System.out.println("Общая стоимость всех товаров =" + String.format(format,total)+ "Руб.");
 
         }
     }
