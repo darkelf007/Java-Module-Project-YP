@@ -1,6 +1,6 @@
 
 
-public class List {
+public class  List {
 
           String name;
         String price;
