@@ -29,12 +29,13 @@ public class Calculator {
 
             while(true) {
                 System.out.println("Введите стоимость товара в формате руб.копейки");
-                String price;
-                price = scanner.nextLine().trim();
+
 
 
 
                 try {
+                    String price;
+                    price = scanner.nextLine().trim();
                     priceNum= Float.parseFloat(price);
                     if (priceNum <= 0) {
                         System.out.println("Введите положительное число");
@@ -44,7 +45,7 @@ public class Calculator {
                         prices.add(price);
                         break;
                     }
-                } catch (ArithmeticException e) {
+                } catch (NumberFormatException e) {
                     System.out.println("Ошибка: Введенный текст не является числом.");
                     continue;
                 }

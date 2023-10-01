@@ -5,7 +5,7 @@ public class Ruble {
         int correct = (int) Math.floor(rubles);
         int count = correct%10;
         if (count == 1){
-            String a = "Рубль";
+            return "Рубль";
         }
          if(count >= 2 && count <=4){
             return "Рубля";
