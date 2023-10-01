@@ -4,12 +4,7 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
 
-        Persons pers = new Persons();
-        pers.countPersons();
-
         Calculator calc = new Calculator();
         calc.caclulator();
-
+        }
     }
-
-}
