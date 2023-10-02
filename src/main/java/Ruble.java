@@ -4,6 +4,7 @@ public class Ruble {
 
         int correct = (int) Math.floor(rubles);
         int count = correct%10;
+
         if (count == 1){
             return "Рубль";
         }

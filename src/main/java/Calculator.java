@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Calculator {
-    public void caclulator() {
+    public void calculator() {
         double total = 0.0;
         Scanner scanner = new Scanner(System.in);
         String format = "%.2f";
@@ -11,15 +11,10 @@ public class Calculator {
         ArrayList<String> prices = new ArrayList<>();
 
         while (true) {
-
-            System.out.println("Введите наименоване товара (или 'Звершить' для завершения)");
-
-
+            System.out.println("Введите наименоване товара (или 'Завершить' для завершения)");
 
             String name = scanner.nextLine().trim();
             products.add(name);
-
-
 
             if (name.equalsIgnoreCase("Завершить")) {
                 break;
@@ -30,27 +25,20 @@ public class Calculator {
             while(true) {
                 System.out.println("Введите стоимость товара в формате руб.копейки");
 
-
-
-
                 try {
                     String price;
                     price = scanner.nextLine().trim();
                     priceNum= Float.parseFloat(price);
                     if (priceNum <= 0) {
                         System.out.println("Введите положительное число");
-                        continue;
-
-                    } else if(priceNum>0){
+                    } else {
                         prices.add(price);
                         break;
                     }
                 } catch (NumberFormatException e) {
                     System.out.println("Ошибка: Введенный текст не является числом.");
-                    continue;
                 }
             }
-
 
         total += priceNum;
 
@@ -60,33 +48,27 @@ public class Calculator {
             if (question.equalsIgnoreCase("1")) {
                 continue;
             }
-
             if (question.equalsIgnoreCase("2")) {
                 break;
             }
-
         }
-
         System.out.println("Cписок продуктов:");
 
         for (int i=0; i<products.size(); i++){
             String product = products.get(i);
-            float price2 = Float.parseFloat(prices.get(i));
+            float priceСonversion = Float.parseFloat(prices.get(i));
 
-            System.out.print(String.format("Товар: " + product + " Стоимость %.2f " , price2 ));
-            System.out.println(Ruble.getRuble(price2));
+            System.out.printf("Товар: " + product + " Стоимость %.2f " , priceСonversion );
+            System.out.println(Ruble.getRuble(priceСonversion));
         }
+        System.out.print("\nОбщая стоимость всех товаров = " + String.format(format,total));
+        System.out.println(" " + Ruble.getRuble(total) + "\n");
 
-        System.out.println("");
-        System.out.print("Общая стоимость всех товаров = " + String.format(format,total));
-        System.out.println(" " + Ruble.getRuble(total));
-        System.out.println("");
+        Persons person = new Persons();
+        double conversion = Double.parseDouble(person.countPersons());
+        double division = total / conversion;
 
-        Persons b = new Persons();
-        double c = Double.parseDouble(b.countPersons());
-        double a = total / c;
-
-        System.out.print(String.format("Итого с каждого по: %.2f ", a));
-        System.out.println(Ruble.getRuble(a));
+        System.out.printf("Итого с каждого по: %.2f ", division);
+        System.out.println(Ruble.getRuble(division));
     }
 }

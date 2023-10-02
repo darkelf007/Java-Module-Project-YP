@@ -10,11 +10,11 @@ public class Persons {
         while (true) {
             persons = scanner.nextLine();
             try {
-                Integer number = Integer.parseInt(persons);
+                int number = Integer.parseInt(persons);
 
                 if (number <= 1) {
 
-                    System.out.println("Не корректоное значение для подсчета");
+                    System.out.println("Некорректоное значение для подсчета");
 
                 } else if (number > 1) {
                     break;
@@ -22,10 +22,8 @@ public class Persons {
             }
                 catch(NumberFormatException e){
                     System.out.println("Ошибка: Введенный текст не является числом.");
-
                 }
         }
-
         System.out.println("Вы ввели " + persons);
 
       return persons;
