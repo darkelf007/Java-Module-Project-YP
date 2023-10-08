@@ -8,55 +8,59 @@ public class Calculator {
         String format = "%.2f";
 
         ArrayList<String> products = new ArrayList<>();
-        ArrayList<String> prices = new ArrayList<>();
+        ArrayList<Double> prices = new ArrayList<>();
 
+        outerLoop:
         while (true) {
-            System.out.println("Введите наименоване товара (или 'Завершить' для завершения)");
+            System.out.println("Введите наименование товара (или 'Завершить' для завершения)");
 
             String name = scanner.nextLine().trim();
-            products.add(name);
 
             if (name.equalsIgnoreCase("Завершить")) {
                 break;
             }
+            products.add(name);
 
-            float priceNum;
+            double priceNum;
 
-            while(true) {
+            while (true) {
                 System.out.println("Введите стоимость товара в формате руб.копейки");
 
                 try {
-                    String price;
-                    price = scanner.nextLine().trim();
-                    priceNum= Float.parseFloat(price);
+                    String priceInput = scanner.nextLine().trim().replace(',', '.');
+                    priceNum = Double.parseDouble(priceInput);
+
                     if (priceNum <= 0) {
                         System.out.println("Введите положительное число");
                     } else {
-                        prices.add(price);
+                        prices.add(priceNum);
                         break;
                     }
                 } catch (NumberFormatException e) {
-                    System.out.println("Ошибка: Введенный текст не является числом.");
+                    System.out.println("\nОшибка: Введенный текст не является числом.\n");
                 }
             }
 
-        total += priceNum;
+            total += priceNum;
 
-            System.out.println("Хотите добавить еще одну позицию?\nВыберети вариант и наберите номер ответа.\n1. ДА\n2. НЕТ");
-            String question = scanner.nextLine().trim();
+            while (true) {
+                System.out.println("Хотите добавить еще одну позицию?\nВыберети вариант и наберите номер ответа.\n1. ДА\n2. НЕТ");
+                String question = scanner.nextLine().trim();
 
-            if (question.equalsIgnoreCase("1")) {
-                continue;
-            }
-            if (question.equalsIgnoreCase("2")) {
-                break;
+                if (question.equalsIgnoreCase("1")) {
+                    break;
+                } else if (question.equalsIgnoreCase("2")) {
+                    break outerLoop;
+                } else {
+                    System.out.println("\nНе верно. Введите только 1 или 2.\n");
+                }
             }
         }
-        System.out.println("Cписок продуктов:");
+        System.out.println("\nCписок продуктов:");
 
         for (int i=0; i<products.size(); i++){
             String product = products.get(i);
-            float priceСonversion = Float.parseFloat(prices.get(i));
+            double priceСonversion = prices.get(i);
 
             System.out.printf("Товар: " + product + " Стоимость %.2f " , priceСonversion );
             System.out.println(Ruble.getRuble(priceСonversion));

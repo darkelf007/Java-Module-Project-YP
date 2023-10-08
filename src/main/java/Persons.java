@@ -11,21 +11,18 @@ public class Persons {
             persons = scanner.nextLine();
             try {
                 int number = Integer.parseInt(persons);
-
                 if (number <= 1) {
-
                     System.out.println("Некорректоное значение для подсчета");
-
                 } else if (number > 1) {
                     break;
                 }
             }
-                catch(NumberFormatException e){
-                    System.out.println("Ошибка: Введенный текст не является числом.");
-                }
+            catch(NumberFormatException e){
+                System.out.println("Ошибка: Введенный текст не является числом.");
+            }
         }
         System.out.println("Вы ввели " + persons);
 
-      return persons;
+        return persons;
     }
 }
